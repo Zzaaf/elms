@@ -8,11 +8,14 @@ const deleteOldLogFiles = require('../middleware/deleteOldLogFiles');
 const serverConfig = (app) => {
   app.use(express.urlencoded({ extended: true }));
   app.use(express.json());
+  app.use(express.static(process.env.NODE_ENV === 'production' ?
+    path.join('/application/dist') :
+    path.join(__dirname, '../../client/dist')));
   app.use(morgan('combined', {
     stream: fs.createWriteStream(path.join(__dirname, `../logs/${getCurrentDate()}-access.log`), { flags: 'a' }),
     skip: (req, res) => res.statusCode < 400,
   }));
-  app.use(deleteOldLogFiles)
+  app.use(deleteOldLogFiles);
 };
 
 module.exports = serverConfig;
