@@ -1,13 +1,16 @@
 const express = require('express');
 const serverConfig = require('./config/serverConfig');
+const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT ?? 4000;
 
 serverConfig(app);
 
-app.get('/', (req, res) => {
-  res.send('Work!');
+app.get('*', (req, res) => {
+  res.sendFile(process.env.NODE_ENV === 'production' ?
+    path.join('/application/dist/index.html') :
+    path.join(__dirname, '../client/dist/index.html'));
 });
 
 app.listen(PORT, () => console.log(`Server started at ${PORT} port`));

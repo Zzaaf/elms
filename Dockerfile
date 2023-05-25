@@ -2,6 +2,7 @@ FROM node
 ENV NODE_ENV production
 ENV DATABASE_URL postgres://postgres:postgres@localhost:5432/elms-db 
 WORKDIR /application
+COPY ./client/dist ./dist
 COPY ./server/package.json .
 COPY ./server/package-lock.json .
 RUN npm ci
