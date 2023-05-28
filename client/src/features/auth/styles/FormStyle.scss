@@ -1,0 +1,75 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form {
+  &__body {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(111, 0, 128, 0.169);
+    padding: 20px;
+    width: 400px;
+    height: auto;
+    border-radius: 10px;
+    & input,
+    button,
+    select {
+      font-size: 16px;
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+    }
+    & button:hover {
+      cursor: pointer;
+      scale: 1.03;
+    }
+    & span {
+      margin-top: 5px;
+      color: rgb(255, 0, 0);
+      font-size: 12px;
+    }
+    & label {
+      position: relative;
+      & input {
+        border: 1px solid transparent;
+        width: 380px;
+        &.error {
+          border: 1px solid red;
+        }
+        &.success {
+          border: 1px solid rgb(26, 255, 0);
+        }
+      }
+    }
+  }
+  &__label-github {
+    display: flex;
+    :nth-child(1) {
+      border-right: none;
+      border-radius: 10px 0 0 10px;
+      padding-right: 0;
+      width: 130px;
+    }
+    :nth-child(2) {
+      // border: 10px solid black;
+      padding-left: 0;
+      border-radius: 0 10px 10px 0;
+    }
+  }
+  &__img-password,
+  &__img-cpassword {
+    width: 30px;
+    position: absolute;
+    right: 5px;
+    top: 15px;
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.1);
+    }
+  }
+}
