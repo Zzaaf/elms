@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { object, ref, string } from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
