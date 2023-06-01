@@ -39,6 +39,20 @@ module.exports = {
           key: 'id',
         },
       },
+      status: {
+        allowNull: false,
+        type: Sequelize.TEXT,
+        defaultValue: false,
+      },
+      avatar: {
+        allowNull: false,
+        type: Sequelize.TEXT,
+        defaultValue: '/images/avatar.png',
+      },
+      telephone: {
+        allowNull: false,
+        type: Sequelize.TEXT,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

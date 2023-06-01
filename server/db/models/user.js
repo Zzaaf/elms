@@ -41,6 +41,20 @@ module.exports = (sequelize, DataTypes) => {
         key: 'id',
       },
     },
+    status: {
+      allowNull: false,
+      type: DataTypes.TEXT,
+      defaultValue: false,
+    },
+    avatar: {
+      allowNull: false,
+      type: DataTypes.TEXT,
+      defaultValue: '/images/avatar.png',
+    },
+    telephone: {
+      allowNull: false,
+      type: DataTypes.TEXT,
+    },
   }, {
     sequelize,
     modelName: 'User',

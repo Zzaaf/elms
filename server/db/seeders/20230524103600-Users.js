@@ -10,6 +10,7 @@ module.exports = {
       email: 'owner@owner',
       password: await bcrypt.hash('owner', 10),
       roleId: 1,
+      telephone: '88005555535',
       createdAt: new Date(),
       updatedAt: new Date(),
 
