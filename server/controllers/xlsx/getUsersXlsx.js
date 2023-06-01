@@ -2,7 +2,7 @@ require('dotenv').config();
 const xlsx = require('xlsx');
 const { User } = require('../../db/models');
 
-async function getXlsx(req, res) {
+async function getUsersXlsx(req, res) {
   const users = await User.findAll({
     raw: true,
     attributes: {
@@ -22,4 +22,4 @@ async function getXlsx(req, res) {
   res.send(buffer);
 }
 
-module.exports = getXlsx;
+module.exports = getUsersXlsx;
