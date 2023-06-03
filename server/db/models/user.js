@@ -55,6 +55,10 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.TEXT,
     },
+    aUrl: {
+      allowNull: false,
+      type: DataTypes.TEXT,
+    },
   }, {
     sequelize,
     modelName: 'User',
