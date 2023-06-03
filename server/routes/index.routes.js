@@ -1,8 +1,8 @@
 const router = require('express').Router();
 const xlsxRouter = require('./xlsx.routes');
-const authRouters = require('./auth.routers');
+const authRouter = require('./auth.routes');
 
-router.use('/auth', authRouters);
+router.use('/auth', authRouter);
 router.use('/xlsx', xlsxRouter);
 
 module.exports = router;

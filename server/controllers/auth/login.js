@@ -2,9 +2,7 @@ const bcrypt = require('bcrypt');
 const { User } = require('../../db/models');
 
 const login = async (req, res) => {
-  const {
-    email, password,
-  } = req.body;
+  const { email, password } = req.body;
 
   try {
     if (email && password) {

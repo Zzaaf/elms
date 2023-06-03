@@ -37,7 +37,7 @@ const registration = async (req, res) => {
           res.status(403).json({ message: 'Такой email уже существует' });
         }
       } else {
-        res.status(403).json({ message: 'Пароль должен быть больше 3 символов' });
+        res.status(403).json({ message: 'Пароль должен быть больше 8 символов' });
       }
     } else {
       res.status(403).json({ message: 'Заполните все поля' });

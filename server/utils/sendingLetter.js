@@ -10,8 +10,9 @@ const transporter = nodemailer.createTransport({
     pass: process.env.PASSWORD_GOOGLE,
   },
 });
+
 function options(email, authenticationUrl) {
-  return mailOptions = {
+  return {
     from: transporter.options.auth.user,
     to: email,
     subject: 'Elbrus Coding Bootcamp',
@@ -51,7 +52,7 @@ function options(email, authenticationUrl) {
         <div class='email'>
             <div class="container">
             <div class='divImg'>
-                <img  style='width:100%;' alt='ELbrus' src='https://media.proglib.io/events/2020/06/05/139630d138c5138dcc0f1dfaf06b3846.jpg'/>
+                <img style='width:100%;' alt='ELbrus' src='https://media.proglib.io/events/2020/06/05/139630d138c5138dcc0f1dfaf06b3846.jpg'/>
             </div>
             <h1>Привет, друг 👋</h1>
             <h3>Для завершения регистрации перейди по ссылке ниже 👇 </h3>
