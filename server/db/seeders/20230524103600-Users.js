@@ -11,6 +11,7 @@ module.exports = {
       password: await bcrypt.hash('owner', 10),
       roleId: 1,
       telephone: '88005555535',
+      aUrl: '',
       createdAt: new Date(),
       updatedAt: new Date(),
 
