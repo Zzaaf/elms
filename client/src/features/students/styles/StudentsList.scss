@@ -1,0 +1,9 @@
+.studentsList {
+  &__item {
+    margin-top: 15px;
+    padding: 10px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-around;
+  }
+}
