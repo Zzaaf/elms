@@ -1,6 +1,4 @@
-const {
-  Model,
-} = require('sequelize');
+const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
   class TypeDepartment extends Model {
@@ -8,28 +6,32 @@ module.exports = (sequelize, DataTypes) => {
       this.belongsTo(TypeCourse, { foreignKey: 'typeCourseId' });
       this.belongsTo(Department, { foreignKey: 'departmentId' });
       this.hasMany(Group, { foreignKey: 'typeDepartmentId' });
+      this.hasMany(Presentation, { foreignKey: 'typeDepartmentId' });
     }
   }
-  TypeDepartment.init({
-    departmentId: {
-      allowNull: false,
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'Departments',
-        key: 'id',
+  TypeDepartment.init(
+    {
+      departmentId: {
+        allowNull: false,
+        type: DataTypes.INTEGER,
+        references: {
+          model: 'Departments',
+          key: 'id',
+        },
+      },
+      typeCourseId: {
+        allowNull: false,
+        type: DataTypes.INTEGER,
+        references: {
+          model: 'TypeCourses',
+          key: 'id',
+        },
       },
     },
-    typeCourseId: {
-      allowNull: false,
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'TypeCourses',
-        key: 'id',
-      },
-    },
-  }, {
-    sequelize,
-    modelName: 'TypeDepartment',
-  });
+    {
+      sequelize,
+      modelName: 'TypeDepartment',
+    }
+  );
   return TypeDepartment;
 };
