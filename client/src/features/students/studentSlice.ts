@@ -1,7 +1,7 @@
 
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { State } from './types/state';
-import * as api from './students/api';
+import * as api from './api';
 import { Student } from './types/student';
 import { Diploma } from './types/diploma';
 
