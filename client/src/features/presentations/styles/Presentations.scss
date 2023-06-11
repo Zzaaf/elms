@@ -1,0 +1,40 @@
+.uploader__container {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  max-width: 600px;
+  padding: 20px;
+  margin-bottom: 50px;
+  label {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+}
+
+.presentations {
+  &__container {
+    padding: 20px;
+    & button {
+      background-color: tomato;
+      padding: 10px;
+      border: none;
+      border-radius: 10px;
+      &:hover {
+        background-color: rgb(245, 131, 111);
+        cursor: pointer;
+      }
+    }
+  }
+  &__item {
+    padding: 10px;
+  }
+  &__btn-open {
+    width: 350px;
+    margin-right: 20px;
+    text-align: left;
+  }
+  &__btn-delete {
+    margin-left: 20px;
+  }
+}
