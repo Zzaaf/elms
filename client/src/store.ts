@@ -1,8 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
+import studentSlice from './features/students/studentSlice';
 
 const store = configureStore({
-  reducer: {},
+  reducer: {student:studentSlice},
 });
 
 export type AppDispatch = typeof store.dispatch;

@@ -2,8 +2,8 @@ import { Diploma } from "./diploma";
 import { Student } from "./student"
 
 export type State = {
-    student:Student;
+    student:Student | null;
     error:undefined | string;
-    diploma: Diploma | {};
-    
+    diploma: Diploma | null;
+    message:'';
 }

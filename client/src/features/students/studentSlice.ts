@@ -4,82 +4,27 @@ import { State } from './types/state';
 import * as api from './api';
 import { Student } from './types/student';
 import { Diploma } from './types/diploma';
+import { Login, Registr } from '../auth/types/auth';
 
 const initialState: State = {
     error:'',
-    diploma:{},
-   student:{
-    "id": 2,
-    "firstName": "Anya",
-    "lastName": "Makarova",
-    "patronymic": "Victorovna",
-    "email": "a@a",
-    "gitHub": "gitgitgit",
-    "avatar": "https://ic.pics.livejournal.com/iglokott/37190182/1358256/1358256_original.jpg",
-    "telephone": "88888888888",
-    "GroupStudents": [
-        {
-            "id": 2,
-            "studentId": 2,
-            "groupId": 2,
-            "phaseId": 2,
-            "status": "pov",
-            "Group": {
-                "id": 2,
-                "name": "fox",
-                "typeDepartmentId": 2,
-                "phaseId": 3,
-                "startDate": "2023-05-03T15:22:52.518Z",
-                "expirationDate": "2023-06-03T15:22:52.518Z"
-            },
-            "Phase": {
-                "id": 2,
-                "name": "1"
-            }
-        },
-        {
-            "id": 3,
-            "studentId": 2,
-            "groupId": 1,
-            "phaseId": 2,
-            "status": "idet",
-            "Group": {
-                "id": 1,
-                "name": "cat",
-                "typeDepartmentId": 2,
-                "phaseId": 2,
-                "startDate": "2023-06-03T15:22:52.518Z",
-                "expirationDate": "2023-07-03T15:22:52.518Z"
-            },
-            "Phase": {
-                "id": 2,
-                "name": "1"
-            }
-        },
-        {
-            "id": 1,
-            "studentId": 2,
-            "groupId": 2,
-            "phaseId": 1,
-            "status": "go",
-            "Group": {
-                "id": 2,
-                "name": "fox",
-                "typeDepartmentId": 2,
-                "phaseId": 3,
-                "startDate": "2023-05-03T15:22:52.518Z",
-                "expirationDate": "2023-06-03T15:22:52.518Z"
-            },
-            "Phase": {
-                "id": 1,
-                "name": "0"
-            }
-        }
-    ]
-}
+    diploma:null,
+   student:null,
+   message:''
 };
 
-
+export const registrStudent = createAsyncThunk('student/registr', (obj: Registr) =>
+  api.registrStudentFetch(obj)
+);
+export const loginStudent = createAsyncThunk('student/login', (obj: Login) =>
+  api.loginStudentFetch(obj)
+);
+export const logoutStudent = createAsyncThunk('student/logout', () =>
+  api.logoutStudentFetch()
+);
+export const verificationStudent = createAsyncThunk('student/verification', () =>
+  api.verificationStudentFetch()
+);
 export const updateStudent = createAsyncThunk('student/update', (student: Student) =>
   api.updateStudent(student)
 );
@@ -93,18 +38,42 @@ const studentSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(updateStudent.fulfilled, (state, action) => {
-        state.student = action.payload;
-      })
-      .addCase(updateStudent.rejected, (state, action) => {
-        state.error = action.error.message;
-      })
-      .addCase(addDiplomaStudent.fulfilled, (state, action) => {
-        state.diploma = action.payload;
-      })
-      .addCase(addDiplomaStudent.rejected, (state, action) => {
-        state.error = action.error.message;
-      })
+    .addCase(registrStudent.fulfilled, (state, action) => {
+      state.message = action.payload.message;
+    })
+    .addCase(registrStudent.rejected, (state, action) => {
+      state.error = action.error.message;
+    })
+    .addCase(loginStudent.fulfilled, (state, action) => {
+      state.student = action.payload;
+    })
+    .addCase(loginStudent.rejected, (state, action) => {
+      state.error = action.error.message;
+    })
+    .addCase(verificationStudent.fulfilled, (state, action) => {
+      state.student = action.payload;
+    })
+    .addCase(verificationStudent.rejected, (state, action) => {
+      state.error = action.error.message;
+    })
+    .addCase(logoutStudent.fulfilled, (state) => {
+      state.student = null;
+    })
+    .addCase(logoutStudent.rejected, (state, action) => {
+      state.error = action.error.message;
+    })
+    .addCase(updateStudent.fulfilled, (state, action) => {
+       state.student = action.payload;
+    })
+     .addCase(updateStudent.rejected, (state, action) => {
+       state.error = action.error.message;
+    })
+     .addCase(addDiplomaStudent.fulfilled, (state, action) => {
+       state.diploma = action.payload;
+    })
+    .addCase(addDiplomaStudent.rejected, (state, action) => {
+       state.error = action.error.message;
+    })
   },
 });
 

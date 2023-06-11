@@ -20,7 +20,6 @@ const schema = object().shape({
 
 const FormAddDiploma = ({setOpenFormDiploma}:{setOpenFormDiploma:()=>void}) => {
   const dispatch = useAppDispatch();
-  const {diploma} = useSelector((store:RootState)=>store.studentSlice)
   const {
     register,
     handleSubmit,

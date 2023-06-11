@@ -1,17 +1,17 @@
 import { Diploma } from "./diploma";
 
 export type Student = {
-    "id": number;
-    "firstName": string;
-    "lastName": string;
-    "patronymic":string;
-    "email":string;
-    "gitHub": string;
-    "status": boolean;
-    "avatar": string;
-    "telephone": string;
-    "GroupStudents": GroupStudent[];
-    "Diploma": Diploma[];
+    id: number;
+    firstName: string;
+    lastName: string;
+    patronymic:string;
+    email:string;
+    gitHub: string;
+    status: boolean;
+    avatar: string;
+    telephone: string;
+    GroupStudents: GroupStudent[];
+    Diplomas: Diploma[];
   };
   export type GroupStudent={
     id:number;
@@ -20,9 +20,9 @@ export type Student = {
     Phase:Phase;
   }
   export type Group={
-    "name":string;
-    "startDate": string;
-    "expirationDate":string;
+    name:string;
+    startDate: string;
+    expirationDate:string;
   }
   export type Phase={
     name:string;
