@@ -5,15 +5,15 @@ const { User } = require('../../db/models');
 
 const registration = async (req, res) => {
   const {
-    firstName, lastName, patronymic, email, password, password2, gitHub, telephone,
+    firstName, lastName, patronymic, email, password, cpassword, gitHub, telephone,
   } = req.body;
   try {
     if (firstName && lastName && patronymic && email
-      && password && password2 && telephone && gitHub) {
-      if (password.length > 8 || password2.length > 8) {
+      && password && cpassword && telephone && gitHub) {
+      if (password.length > 8 || cpassword.length > 8) {
         const user = await User.findOne({ where: { email } });
         if (!user) {
-          if (password === password2) {
+          if (password === cpassword) {
             const hash = await bcrypt.hash(password, 10);
             const aUrl = uuidv4();
             const authenticationUrl = await bcrypt.hash(aUrl, 10);
@@ -27,6 +27,7 @@ const registration = async (req, res) => {
               gitHub,
               telephone,
               aUrl: authenticationUrl,
+              status: false,
             });
             sendingLetter(email, authenticationUrl);
             res.status(201).json({ message: 'ok' });

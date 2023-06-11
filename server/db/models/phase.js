@@ -10,13 +10,15 @@ module.exports = (sequelize, DataTypes) => {
   }
   Phase.init(
     {
-      allowNull: false,
-      type: DataTypes.TEXT,
+      name: {
+        allowNull: false,
+        type: DataTypes.TEXT,
+      },
     },
     {
       sequelize,
       modelName: 'Phase',
-    }
+    },
   );
   return Phase;
 };

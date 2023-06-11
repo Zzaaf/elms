@@ -16,7 +16,7 @@ const schema = object().shape({
   telephone:string().required('Заполните все поля')
 
 });
-const FormUpdateStudent = ({setOpenFormStudent,student}:{setOpenFormStudent:()=>void,student:Student}) => {
+const FormUpdateStudent = ({setOpenFormStudent,student}:{setOpenFormStudent:()=>void,student:Student | null}) => {
   const dispatch = useAppDispatch();
   const {
     register,
@@ -28,14 +28,14 @@ const FormUpdateStudent = ({setOpenFormStudent,student}:{setOpenFormStudent:()=>
 
   const onSubmit: SubmitHandler<Student> = (data) =>{
    
-    dispatch(updateStudent({...data,id:student.id}))
+   student &&  dispatch(updateStudent({...data,id:student.id}))
     setOpenFormStudent()
   }
 
 
   return (
     <div className="form__container">
-      <form className="form__body" onSubmit={handleSubmit(onSubmit)}>
+{   student &&   <form className="form__body" onSubmit={handleSubmit(onSubmit)}>
 
         <input {...register('firstName')} placeholder="Имя" defaultValue={student.firstName} />
         <span>{errors.firstName?.message}</span>
@@ -56,8 +56,8 @@ const FormUpdateStudent = ({setOpenFormStudent,student}:{setOpenFormStudent:()=>
          <span>{errors.gitHub?.message}</span>
          
     
-        <button type="submit">Register</button>
-      </form>
+        <button type="submit">Save</button>
+      </form>}
     </div>
   );
 };

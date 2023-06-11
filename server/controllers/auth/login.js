@@ -8,22 +8,24 @@ const login = async (req, res) => {
 
   try {
     if (email && password) {
-      const student = await User.findOne({
-        where: { email },
-        attributes: { exclude: ['password', 'status', 'aUrl', 'roleId', 'createdAt', 'updatedAt'] },
-        include: {
-          model: GroupStudent,
-          attributes: { exclude: ['createdAt', 'updatedAt'] },
+      let student = await User.findOne({ where: { email } });
+      if (student && await bcrypt.compare(password, student.password)) {
+        student = await User.findOne({
+          where: { email },
+          attributes: { exclude: ['password', 'status', 'aUrl', 'roleId', 'createdAt', 'updatedAt'] },
           include: [{
-            model: Group,
+            model: GroupStudent,
             attributes: { exclude: ['createdAt', 'updatedAt'] },
+            include: [{
+              model: Group,
+              attributes: { exclude: ['createdAt', 'updatedAt'] },
+            },
+            { model: Phase, attributes: { exclude: ['createdAt', 'updatedAt'] } },
+            ],
           },
-          { model: Phase, attributes: { exclude: ['createdAt', 'updatedAt'] } },
           { model: Diploma, attributes: { exclude: ['createdAt', 'updatedAt'] } },
           ],
-        },
-      });
-      if (student && await bcrypt.compare(password, student.password)) {
+        });
         req.session.userId = student.id;
         res.status(201).json(student);
       } else {
@@ -33,7 +35,7 @@ const login = async (req, res) => {
       res.status(403).json({ message: 'Заполните все поля' });
     }
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).json(console.log(error.message));
   }
 };
 
