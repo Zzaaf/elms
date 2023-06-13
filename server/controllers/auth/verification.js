@@ -1,4 +1,3 @@
-const bcrypt = require('bcrypt');
 const {
   User, GroupStudent, Group, Phase, Diploma,
 } = require('../../db/models');
@@ -27,8 +26,8 @@ const verification = async (req, res) => {
     } else {
       res.status(403).json({ message: 'Студент не в сети' });
     }
-  } catch (error) {
-    res.status(500).json(console.log(error.message));
+  } catch ({ message }) {
+    res.status(500).json({ message });
   }
 };
 

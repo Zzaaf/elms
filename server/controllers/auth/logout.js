@@ -6,8 +6,8 @@ const logout = async (req, res) => {
       }
       return res.clearCookie('user_auth').json({ message: 'Успешный выход' });
     });
-  } catch (error) {
-    res.status(404).json({ message: error.message });
+  } catch ({ message }) {
+    res.status(404).json({ message });
   }
 };
 

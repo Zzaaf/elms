@@ -10,8 +10,8 @@ const confirmationRegistration = async (req, res) => {
     userConfirmation.save();
     req.session.userId = userConfirmation.id;
     res.status(201).json(userConfirmation);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
+  } catch ({ message }) {
+    res.status(500).json({ message });
   }
 };
 

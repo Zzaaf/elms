@@ -6,6 +6,7 @@ import LoginForm from '../features/auth/LoginForm';
 import { useEffect } from 'react';
 import { useAppDispatch } from '../store';
 import { verificationStudent } from '../features/students/studentSlice';
+import Navbar from '../features/navbar/Navbar';
 
 function App() {
   const dispatch= useAppDispatch()
@@ -14,6 +15,7 @@ function App() {
   },[])
   return (
     <>
+      <Navbar/>
       <Routes>
        <Route path='/auth/registr' element={<RegistrationForm/>}/>
        <Route path='/auth/login' element={<LoginForm/>}/>
