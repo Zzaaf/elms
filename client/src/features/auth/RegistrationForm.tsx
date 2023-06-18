@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { object, ref, string } from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -6,8 +6,10 @@ import openEye from './styles/images/open-eye.png';
 import closedEye from './styles/images/closed-eye.png';
 import {  Registr } from './types/auth';
 import './styles/FormStyle.scss';
-import { useAppDispatch } from '../../store';
+import { RootState, useAppDispatch } from '../../store';
 import { registrStudent } from '../students/studentSlice';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const schema = object().shape({
   lastName: string().required('Surname is required'),
@@ -28,6 +30,13 @@ const schema = object().shape({
 });
 const RegistrationForm = () => {
   const dispatch = useAppDispatch()
+  const {student} = useSelector((store:RootState)=>store.student)
+  const navigate = useNavigate()
+  useEffect(()=>{
+    if(student){
+        navigate('/student/profile')
+    }
+        },[student])
   const {
     register,
     handleSubmit,

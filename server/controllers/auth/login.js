@@ -34,8 +34,8 @@ const login = async (req, res) => {
     } else {
       res.status(403).json({ message: 'Заполните все поля' });
     }
-  } catch (error) {
-    res.status(500).json(console.log(error.message));
+  } catch ({ message }) {
+    res.status(500).json({ message });
   }
 };
 
