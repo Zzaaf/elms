@@ -10,6 +10,7 @@ const initialState: State = {
     error:'',
     diploma:null,
    student:null,
+   students:[],
    message:''
 };
 
@@ -29,10 +30,13 @@ export const verificationStudent = createAsyncThunk('student/verification', () =
   api.verificationStudentFetch()
 );
 export const updateStudent = createAsyncThunk('student/update', (student: Student) =>
-  api.updateStudent(student)
+  api.updateStudentFetch(student)
 );
 export const addDiplomaStudent = createAsyncThunk('student/diploma', (diploma: Diploma) =>
   api.addDiplomaStudentFetch(diploma)
+);
+export const allStudents = createAsyncThunk('student/all', () =>
+  api.allStudentsFetch()
 );
 
 const studentSlice = createSlice({
@@ -80,6 +84,12 @@ const studentSlice = createSlice({
     .addCase(addDiplomaStudent.rejected, (state, action) => {
        state.error = action.error.message;
     })
+    .addCase(allStudents.fulfilled, (state, action) => {
+      state.students = action.payload;
+   })
+   .addCase(allStudents.rejected, (state, action) => {
+      state.error = action.error.message;
+   })
   },
 });
 
