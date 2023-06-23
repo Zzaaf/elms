@@ -7,9 +7,9 @@ import closedEye from './styles/images/closed-eye.png';
 import {  Login } from './types/auth';
 import './styles/FormStyle.scss';
 import { RootState, useAppDispatch } from '../../store';
-import { loginStudent } from '../students/studentSlice';
+import { confirmationStudent, loginStudent } from '../students/studentSlice';
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const schema = object().shape({
   email: string().required('Email is required'),
@@ -19,11 +19,15 @@ const schema = object().shape({
     .max(25, 'Password cannot exceed more than 25 characters'),
 });
 const LoginForm = () => {
-    const {student} = useSelector((store:RootState)=>store.student)
+    const {student,error} = useSelector((store:RootState)=>store.student)
+    const {aUrl} = useParams()
     const navigate = useNavigate()
     useEffect(()=>{
 if(student){
     navigate('/student/profile')
+}
+  if(aUrl && aUrl.length > 7 && !student){
+  dispatch(confirmationStudent(aUrl))
 }
     },[student])
   const dispatch = useAppDispatch()
@@ -42,13 +46,13 @@ if(student){
   return (
     <div className="form__container">
       <form className="form__body" onSubmit={handleSubmit(onSubmit)}>
-        <input {...register('email')} placeholder="Email" />
+        <input {...register('email')} placeholder="Электронная почта" />
         <span>{errors.email?.message}</span>
         <label htmlFor="">
           <input
             type={showPassword ? 'text' : 'password'}
             {...register('password')}
-            placeholder="Password"
+            placeholder="Пароль"
           />
           <img
             onClick={() => setShowPassword((prev) => !prev)}
@@ -58,7 +62,8 @@ if(student){
           />
         </label>
         <span>{errors.password?.message}</span>
-        <button type="submit">Login</button>
+        {error && <div className='form_message'>{error}</div>}
+        <button type="submit">Войти</button>
       </form>
     </div>
   );

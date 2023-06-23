@@ -9,7 +9,7 @@ const confirmationRegistration = async (req, res) => {
     userConfirmation.status = true;
     userConfirmation.save();
     req.session.userId = userConfirmation.id;
-    res.status(201).json(userConfirmation);
+    res.status(201).json({ message: 'ok' });
   } catch ({ message }) {
     res.status(500).json({ message });
   }

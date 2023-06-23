@@ -18,7 +18,7 @@ function App() {
       <Navbar/>
       <Routes>
        <Route path='/auth/registr' element={<RegistrationForm/>}/>
-       <Route path='/auth/login' element={<LoginForm/>}/>
+       <Route path='/auth/login/:aUrl' element={<LoginForm/>}/>
        <Route path='/student' element={<StudentsList/>}/>
        <Route path='/student/profile' element={<ProfileStudent/>}/>
       </Routes>

@@ -56,7 +56,7 @@ function options(email, authenticationUrl) {
             </div>
             <h1>Привет, друг 👋</h1>
             <h3>Для завершения регистрации перейди по ссылке ниже 👇 </h3>
-            <button style='background:#29EDFF; border-radius:10px'> <h3 style='color:#4520AB;'>http://localhost:3000/${authenticationUrl}</h3></button>
+            <button style='background:#29EDFF; border-radius:10px'> <h3 style='color:#4520AB;'>http://http://localhost:5173/auth/login/${authenticationUrl}</h3></button>
             </div>
        </div>
     </body>

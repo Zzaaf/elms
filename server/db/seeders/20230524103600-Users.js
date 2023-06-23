@@ -12,6 +12,7 @@ module.exports = {
       roleId: 1,
       telephone: '88005555535',
       aUrl: '',
+      status: true,
       createdAt: new Date(),
       updatedAt: new Date(),
 

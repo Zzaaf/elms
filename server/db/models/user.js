@@ -44,7 +44,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     status: {
       allowNull: false,
-      type: DataTypes.TEXT,
+      type: DataTypes.BOOLEAN,
       defaultValue: false,
     },
     avatar: {
