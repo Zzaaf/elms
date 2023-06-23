@@ -5,5 +5,5 @@ export type State = {
     student:Student | null;
     error:undefined | string;
     diploma: Diploma | null;
-    message:'';
+    message:string;
 }

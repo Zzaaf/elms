@@ -41,7 +41,7 @@ module.exports = {
       },
       status: {
         allowNull: false,
-        type: Sequelize.TEXT,
+        type: Sequelize.BOOLEAN,
         defaultValue: false,
       },
       avatar: {

@@ -15,8 +15,8 @@ const registration = async (req, res) => {
         if (!user) {
           if (password === cpassword) {
             const hash = await bcrypt.hash(password, 10);
-            const aUrl = uuidv4();
-            const authenticationUrl = await bcrypt.hash(aUrl, 10);
+            const authenticationUrl = uuidv4();
+
             await User.create({
               firstName,
               lastName,
@@ -30,7 +30,7 @@ const registration = async (req, res) => {
               status: false,
             });
             sendingLetter(email, authenticationUrl);
-            res.status(201).json({ message: 'ok' });
+            res.status(201).json({ message: 'successfully' });
           } else {
             res.status(403).json({ message: 'Ваши пароли не совпадают' });
           }

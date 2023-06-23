@@ -13,5 +13,5 @@ export type Login ={
   password: string;
 }
 export type Message = {
-  message : '';
+  message : string;
 }

@@ -18,6 +18,21 @@ export const registrStudentFetch = async (obj: Registr): Promise<Message> => {
   return res.json();
 };
 
+export const confirmationStudentFetch = async (str: string): Promise<Message> => {
+  const res = await fetch(`http://localhost:4000/auth/confirmation/${str}`,{
+    method: 'PUT',
+    headers: {
+        'Content-type': 'application/json',
+      },
+      credentials: 'include',
+  });
+  if (!res.ok) {
+    const { message } = await res.json();
+    throw message;
+ }
+  return res.json();
+};
+
 export const loginStudentFetch = async (obj: Login): Promise<Student> => {
   const res = await fetch(`http://localhost:4000/auth/login`,{
     method: 'POST',
