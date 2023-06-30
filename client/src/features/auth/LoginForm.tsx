@@ -15,7 +15,7 @@ const schema = object().shape({
   email: string().required('Email is required'),
   password: string()
     .required('Password is required')
-    .min(8, 'Password length should be at least 8 characters')
+    .min(5, 'Password length should be at least 8 characters')
     .max(25, 'Password cannot exceed more than 25 characters'),
 });
 const LoginForm = () => {

@@ -71,7 +71,7 @@ export const logoutStudentFetch = async (): Promise<Message> => {
   return res.json();
 };
 
-export const updateStudent = async (student: Student): Promise<Student> => {
+export const updateStudentFetch = async (student: Student): Promise<Student> => {
   const res = await fetch(`http://localhost:4000/students/update/${student.id}`,{
     method: 'PUT',
     headers: {
@@ -96,6 +96,15 @@ export const addDiplomaStudentFetch = async (diploma: Diploma): Promise<Diploma>
       credentials: 'include',
       body: JSON.stringify(diploma)
   });
+  if (!res.ok) {
+    const { message } = await res.json();
+    throw message;
+ }
+  return res.json();
+};
+
+export const allStudentsFetch = async (): Promise<Student[]> => {
+  const res = await fetch('http://localhost:4000/students/all');
   if (!res.ok) {
     const { message } = await res.json();
     throw message;

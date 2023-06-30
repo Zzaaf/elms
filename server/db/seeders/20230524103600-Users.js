@@ -1,22 +1,21 @@
 /** @type {import('sequelize-cli').Migration} */
 const bcrypt = require('bcrypt');
+const data = require('../studentsSeeders');
 
 module.exports = {
   async up(queryInterface) {
-    await queryInterface.bulkInsert('Users', [{
-      firstName: 'owner',
-      lastName: 'owner',
-      patronymic: 'owner',
-      email: 'owner@owner',
-      password: await bcrypt.hash('owner', 10),
-      roleId: 1,
-      telephone: '88005555535',
-      aUrl: '',
-      status: true,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-
-    }], {});
+    const arrStudents = await Promise.all(data.map(async (el) => (
+      {
+        ...el,
+        patronymic: 'Отчество',
+        password: await bcrypt.hash('2222222', 10),
+        roleId: 2,
+        aUrl: '',
+        status: true,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      })));
+    await queryInterface.bulkInsert('Users', arrStudents, {});
   },
 
   async down(queryInterface) {

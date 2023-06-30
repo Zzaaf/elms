@@ -1,18 +1,19 @@
 import React from 'react';
-import { Student } from './types/types';
+import { Student } from './types/student';
 
 const StudentsItem = ({ student }: { student: Student }) => {
   return (
-    <div className="studentsList__item">
-      <span>{student.id}</span>
-      <span>{student.lastName}</span>
-      <span>{student.firstName}</span>
-      <span>{student.patronymic}</span>
-      <span>{student.email}</span>
-      <span>{student.telephone}</span>
-      <span>{student.gitHub}</span>
-      <span>{student.status}</span>
-    </div>
+ 
+      <tr >
+        <td>{student.id}</td>
+        <td>{student.firstName}</td>
+        <td>{student.lastName}</td>
+        <td>{student.patronymic}</td>
+        <td>{student.email}</td>
+        <td>{student.telephone}</td>
+        <td>{student.gitHub}</td>
+      </tr>
+  
   );
 };
 
