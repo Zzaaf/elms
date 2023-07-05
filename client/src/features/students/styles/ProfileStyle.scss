@@ -1,3 +1,18 @@
 .profile{
     display: flex;
+    justify-content: center;
+}
+.container-box{
+    display: flex;
+    background-color: white;
+    border-radius: 24px;
+    padding: 20px;
+    & h3{
+      display: flex;
+      align-items: center;
+    }
+    & p{
+        color:rgb(69, 32, 171) ;
+        width: 150px;
+    }
 }

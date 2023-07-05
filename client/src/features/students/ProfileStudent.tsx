@@ -13,9 +13,10 @@ const ProfileStudent = () => {
   const {student,diploma} = useSelector((store:RootState)=>store.student)
   return (
     <div className='profile'>
-        <div>
-   {!openFormStudent && student ?   <><div><p>{student.lastName}</p><p>{student.firstName}</p><p>{student.patronymic}</p></div>
-        <div><p>{student.email}</p><p>{student.gitHub}</p></div>
+      <div className='container-box'>
+        <div >
+   {!openFormStudent && student ?   <><div><h3><p>Фамилия</p>{student.lastName}</h3><h3><p>Имя</p>{student.firstName}</h3><h3><p>Отчество</p>{student.patronymic}</h3></div>
+        <div><h3><p>Почта</p>{student.email}</h3><h3><p>GitHub</p>{student.gitHub}</h3></div>
         <div>
          { student.GroupStudents.map((group:GroupStudent)=><div key={group.id}>
           phase:{group.Phase.name}
@@ -26,13 +27,14 @@ const ProfileStudent = () => {
         <p onClick={()=>setOpenFormStudent(true)}>Изменить личные данные</p>
         </> 
         : <FormUpdateStudent setOpenFormStudent={()=>setOpenFormStudent(false)} student={student}/>}
-      {diploma && (!openFormDiploma ? <p onClick={()=>setOpenFormDiploma(true)}>Добавить данные по диплому </p>
+      {diploma && (!openFormDiploma ? <h3 onClick={()=>setOpenFormDiploma(true)}>Добавить данные по диплому </h3>
        : <FormAddDiploma setOpenFormDiploma={()=>setOpenFormDiploma(false)}/>)}
         </div>
        <div>
        <div>
         <img src={`http://localhost:4000/${student?.avatar}`} alt='avatar'/>
         </div>
+       </div>
        </div>
     </div>
   )
