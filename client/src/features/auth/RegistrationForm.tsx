@@ -30,7 +30,7 @@ const schema = object().shape({
 });
 const RegistrationForm = () => {
   const dispatch = useAppDispatch()
-  const {student} = useSelector((store:RootState)=>store.student)
+  const {student,message,error} = useSelector((store:RootState)=>store.student)
   const navigate = useNavigate()
   useEffect(()=>{
     if(student){
@@ -52,31 +52,34 @@ const RegistrationForm = () => {
 
   return (
     <div className="form__container">
+    { message.length > 0  ?  <div className='form_message'>{message}</div>
+    :
       <form className="form__body" onSubmit={handleSubmit(onSubmit)}>
+      <h2>Регистрация</h2>
         <input
           className={errors.lastName && 'error'}
           {...register('lastName')}
-          placeholder="LastName"
+          placeholder="Фамилия"
         />
         <span>{errors.lastName?.message}</span>
-        <input {...register('firstName')} placeholder="FirstName" />
+        <input {...register('firstName')} placeholder="Имя" />
         <span>{errors.firstName?.message}</span>
-        <input {...register('patronymic')} placeholder="Patronymic" />
+        <input {...register('patronymic')} placeholder="Отчество" />
         <span>{errors.patronymic?.message}</span>
-        <input {...register('email')} placeholder="Email" />
+        <input {...register('email')} placeholder="Электронная почта" />
         <span>{errors.email?.message}</span>
-        <input {...register('telephone')} placeholder="Telephone" />
+        <input {...register('telephone')} placeholder="Телефон" />
         <span>{errors.telephone?.message}</span>
             <label className="form__label-github">
               <input type="text" readOnly value={'https://github.com/'} />
-              <input {...register('gitHub')} placeholder="Your account here" />
+              <input {...register('gitHub')} placeholder="Ваш аккаунт" />
             </label>
             <span>{errors.gitHub?.message}</span>
         <label htmlFor="">
           <input
             type={showPassword ? 'text' : 'password'}
             {...register('password')}
-            placeholder="Password"
+            placeholder="Пароль"
           />
           <img
             onClick={() => setShowPassword((prev) => !prev)}
@@ -90,7 +93,7 @@ const RegistrationForm = () => {
           <input
             type={showCpassword ? 'text' : 'password'}
             {...register('cpassword')}
-            placeholder="Confirm password"
+            placeholder="Повторный ввод пароля"
           />
           <img
             onClick={() => setShowCpassword((prev) => !prev)}
@@ -100,8 +103,9 @@ const RegistrationForm = () => {
           />
         </label>
         {errors.cpassword && <span>{errors.cpassword?.message}</span>}
-        <button type="submit">Register</button>
-      </form>
+        {error && <div className='form_message'>{error}</div>}
+        <button type="submit">Зарегистрироваться</button>
+      </form>}
     </div>
   );
 };

@@ -10,11 +10,15 @@ const initialState: State = {
     error:'',
     diploma:null,
    student:null,
+   students:[],
    message:''
 };
 
 export const registrStudent = createAsyncThunk('student/registr', (obj: Registr) =>
   api.registrStudentFetch(obj)
+);
+export const confirmationStudent = createAsyncThunk('student/confirmation', (str: string) =>
+  api.confirmationStudentFetch(str)
 );
 export const loginStudent = createAsyncThunk('student/login', (obj: Login) =>
   api.loginStudentFetch(obj)
@@ -26,10 +30,13 @@ export const verificationStudent = createAsyncThunk('student/verification', () =
   api.verificationStudentFetch()
 );
 export const updateStudent = createAsyncThunk('student/update', (student: Student) =>
-  api.updateStudent(student)
+  api.updateStudentFetch(student)
 );
 export const addDiplomaStudent = createAsyncThunk('student/diploma', (diploma: Diploma) =>
   api.addDiplomaStudentFetch(diploma)
+);
+export const allStudents = createAsyncThunk('student/all', () =>
+  api.allStudentsFetch()
 );
 
 const studentSlice = createSlice({
@@ -39,7 +46,10 @@ const studentSlice = createSlice({
   extraReducers: (builder) => {
     builder
     .addCase(registrStudent.fulfilled, (state, action) => {
-      state.message = action.payload.message;
+      if(action.payload.message === 'successfully'){
+        state.message = 'Вы успешно зарегистрировались пройдите на почту указанную при регистрации';
+      }
+      
     })
     .addCase(registrStudent.rejected, (state, action) => {
       state.error = action.error.message;
@@ -54,7 +64,7 @@ const studentSlice = createSlice({
       state.student = action.payload;
     })
     .addCase(verificationStudent.rejected, (state, action) => {
-      state.error = action.error.message;
+      state.error = '';
     })
     .addCase(logoutStudent.fulfilled, (state) => {
       state.student = null;
@@ -74,6 +84,12 @@ const studentSlice = createSlice({
     .addCase(addDiplomaStudent.rejected, (state, action) => {
        state.error = action.error.message;
     })
+    .addCase(allStudents.fulfilled, (state, action) => {
+      state.students = action.payload;
+   })
+   .addCase(allStudents.rejected, (state, action) => {
+      state.error = action.error.message;
+   })
   },
 });
 

@@ -1,9 +1,15 @@
-.studentsList {
-  &__item {
+.studentsList__container {
     margin-top: 15px;
     padding: 10px;
-    border: 1px solid black;
     display: flex;
-    justify-content: space-around;
-  }
+    justify-content: center;
+}
+td,tr,th{
+  border: 1px solid rgb(69, 32, 171);
+  padding: 10px;
+}
+.table{
+  background-color: white;
+  padding: 20px;
+  border-radius: 24px;
 }

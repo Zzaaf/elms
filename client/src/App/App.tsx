@@ -22,7 +22,7 @@ function App() {
       <Routes>
         <Route path="/auth/registr" element={<RegistrationForm />} />
         <Route path="/auth/login" element={<LoginForm />} />
-        <Route path="/student" element={<StudentsList />} />
+        <Route path="/students" element={<StudentsList />} />
         <Route path="/student/profile" element={<ProfileStudent />} />
         <Route path="/presentations" element={<PresentationList />} />
         <Route path="/videos" element={<VideoPage />} />

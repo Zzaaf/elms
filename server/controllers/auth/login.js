@@ -8,7 +8,7 @@ const login = async (req, res) => {
 
   try {
     if (email && password) {
-      let student = await User.findOne({ where: { email } });
+      let student = await User.findOne({ where: { email, status: true } });
       if (student && await bcrypt.compare(password, student.password)) {
         student = await User.findOne({
           where: { email },
