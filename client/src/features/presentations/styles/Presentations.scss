@@ -1,11 +1,19 @@
 .uploader__container {
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
-  max-width: 600px;
+  background-color: #fff;
+  max-width: 800px;
+  min-width: 400px;
   padding: 20px;
   margin-bottom: 50px;
-  label {
+  border-radius: 24px;
+  & input {
+    padding: 10px;
+    border-width: 0px 0px 4px 0px;
+    border-style: none none solid none;
+    border-color: rgb(255, 188, 91);
+  }
+  & label {
     display: flex;
     flex-direction: column;
     margin-bottom: 10px;
@@ -14,7 +22,11 @@
 
 .presentations {
   &__container {
-    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
     & button {
       outline: 0;
       border: 0;
