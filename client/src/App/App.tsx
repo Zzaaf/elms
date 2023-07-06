@@ -7,20 +7,25 @@ import { useEffect } from 'react';
 import { useAppDispatch } from '../store';
 import { verificationStudent } from '../features/students/studentSlice';
 import Navbar from '../features/navbar/Navbar';
+import VideoPage from '../features/videos/VideoPage';
+import PresentationList from '../features/presentations/PresentationList';
 
 function App() {
-  const dispatch= useAppDispatch()
-  useEffect(()=>{
-  dispatch(verificationStudent())
-  },[])
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(verificationStudent());
+  }, []);
+
   return (
     <>
-      <Navbar/>
+      <Navbar />
       <Routes>
-       <Route path='/auth/registr' element={<RegistrationForm/>}/>
-       <Route path='/auth/login/:aUrl' element={<LoginForm/>}/>
-       <Route path='/student' element={<StudentsList/>}/>
-       <Route path='/student/profile' element={<ProfileStudent/>}/>
+        <Route path="/auth/registr" element={<RegistrationForm />} />
+        <Route path="/auth/login" element={<LoginForm />} />
+        <Route path="/students" element={<StudentsList />} />
+        <Route path="/student/profile" element={<ProfileStudent />} />
+        <Route path="/presentations" element={<PresentationList />} />
+        <Route path="/videos" element={<VideoPage />} />
       </Routes>
     </>
   );
