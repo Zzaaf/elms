@@ -32,11 +32,11 @@ const Uploader = () => {
   return (
     <form className="uploader__container" onSubmit={handleSubmit}>
       <label>
-        Type department
+        Тип кампуса
         <input min={1} max={5} type="number" ref={typeDepartmentInput} />
       </label>
       <label>
-        Phase number
+        Номер фазы
         <input min={1} max={3} type="number" ref={phaseNumberInput} />
       </label>
       <input type="file" ref={fileInput} />

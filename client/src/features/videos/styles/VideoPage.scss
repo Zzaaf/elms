@@ -1,0 +1,34 @@
+.video-page {
+  &__container {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 800px;
+  }
+  &__player {
+    border: 2px solid black;
+    margin: 0 auto;
+  }
+  &__button {
+    outline: 0;
+    border: 0;
+    margin: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    min-width: 64px;
+    background-color: #ffbc5b;
+    border-radius: 15px;
+    color: #0f0f0f;
+    line-height: 1.25;
+    font-size: 10px;
+    font-weight: 700;
+    font-family: RF Rostin;
+    text-transform: uppercase;
+    transition: all 0.2s ease-in-out;
+    &:hover {
+      cursor: pointer;
+      box-shadow: 0px 3px 10px 2px rgba($color: #ffbc5b, $alpha: 0.6);
+    }
+  }
+}
