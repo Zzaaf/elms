@@ -1,6 +1,8 @@
 .video-page {
   &__container {
+    margin: 0 auto;
     display: flex;
+    align-items: center;
     flex-wrap: wrap;
     max-width: 800px;
   }

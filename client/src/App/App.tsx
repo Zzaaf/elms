@@ -9,6 +9,7 @@ import { verificationStudent } from '../features/students/studentSlice';
 import Navbar from '../features/navbar/Navbar';
 import VideoPage from '../features/videos/VideoPage';
 import PresentationList from '../features/presentations/PresentationList';
+import '../assets/fonts/fonts.scss';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -20,8 +21,8 @@ function App() {
     <>
       <Navbar />
       <Routes>
-        <Route path="/auth/registr" element={<RegistrationForm />} />
-        <Route path="/auth/login" element={<LoginForm />} />
+        <Route path="/auth/registration" element={<RegistrationForm />} />
+        <Route path="/auth/authorization" element={<LoginForm />} />
         <Route path="/students" element={<StudentsList />} />
         <Route path="/student/profile" element={<ProfileStudent />} />
         <Route path="/presentations" element={<PresentationList />} />
