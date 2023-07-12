@@ -18,7 +18,7 @@ const addPresentation = async (req, res) => {
       if (err) {
         return res.status(500).send(err);
       }
-      res.json(presentation);
+      return res.json(presentation);
     });
   } catch ({ message }) {
     res.json({ message });
