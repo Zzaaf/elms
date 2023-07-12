@@ -1,6 +1,4 @@
-const {
-  User,
-} = require('../../db/models');
+const { User } = require('../../db/models');
 
 const allStudents = async (req, res) => {
   try {

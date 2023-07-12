@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser');
 const fs = require('fs');
 const cors = require('cors');
 const fileUpload = require('express-fileupload');
+const helmet = require('helmet');
 const sessionConfig = require('./sessionConfig');
 const getCurrentDate = require('../utils/getCurrentDate');
 const deleteOldLogFiles = require('../middleware/deleteOldLogFiles');
@@ -17,6 +18,10 @@ const corsOptions = {
 };
 
 const serverConfig = (app) => {
+  app.use(helmet.hidePoweredBy());
+  app.use(helmet.xssFilter());
+  app.use(helmet.referrerPolicy());
+  app.use(helmet.permittedCrossDomainPolicies());
   app.use(cors(corsOptions));
   app.use(session(sessionConfig));
   app.use(cookieParser());
