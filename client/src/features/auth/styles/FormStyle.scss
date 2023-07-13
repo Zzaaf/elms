@@ -23,21 +23,40 @@
     & input,
     button,
     select {
-      font-size: 16px;
+      font-size: 18px;
       margin: 8px 0px;
       padding: 10px;
       outline: none;
     }
     & button:hover {
-      cursor: pointer;
-      scale: 1.03;
+      background-color: rgb(255, 188, 91);
+      box-shadow: rgba(255, 188, 91, 0.7) 0px 4px 20px;
     }
     & button {
-      border: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      box-sizing: border-box;
+      outline: 0px;
+      border: 0px;
+      margin: 0px;
+      cursor: pointer;
+      user-select: none;
+      vertical-align: middle;
+      appearance: none;
+      text-decoration: none;
+      text-transform: uppercase;
+      min-width: 64px;
+      transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
       background-color: rgb(255, 188, 91);
-      border-radius: 16px;
-      border-color:  rgb(255, 188, 91);
+      border-radius: 20px;
+      padding: 16px 32px;
       color: rgb(15, 15, 15);
+      line-height: 1.19;
+      font-size: 16px;
+      font-weight: 700;
+      font-family: monospace;
     }
     & input {
       border-width: 0px 0px 4px 0px;
@@ -70,10 +89,9 @@
     :nth-child(1) {
       border-right: none;
       padding-right: 0;
-      width: 130px;
+      width: 150px;
     }
     :nth-child(2) {
-      // border: 10px solid black;
       padding-left: 0;
     }
   }

@@ -1,3 +1,46 @@
-.profile{
+.profile {
+  &__body { 
     display: flex;
+    justify-content: center;
+    align-items: start;
+    border-radius: 16px;
+    padding: 8px 32px;
+    background-color: #F4F2FA;
+    width: max-content;
+    margin: 1rem auto;
+    flex-direction: column;
+
+    &-avatar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto;
+    }
+  }
+
+  button {
+    outline: 0;
+    border: 0;
+    margin: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    min-width: 64px;
+    background-color: #ffbc5b;
+    border-radius: 15px;
+    color: #0f0f0f;
+    line-height: 1.25;
+    font-size: 16px;
+    font-weight: 700;
+    font-family: monospace;
+    text-transform: uppercase;
+    transition: all 0.2s ease-in-out;
+  }
+
+  & button:hover {
+    background-color: rgb(255, 188, 91);
+    box-shadow: rgba(255, 188, 91, 0.7) 0px 4px 20px;
+  }
 }
+

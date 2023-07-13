@@ -3,9 +3,8 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { object, string } from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Diploma } from './types/diploma';
-import { RootState, useAppDispatch } from '../../store';
+import { useAppDispatch } from '../../store';
 import { addDiplomaStudent } from './studentSlice';
-import { useSelector } from 'react-redux';
 
 const schema = object().shape({
   series: string().required('Заполните все поля'),

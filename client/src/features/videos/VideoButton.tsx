@@ -1,4 +1,3 @@
-import React from 'react';
 import { VideoSnippet } from './types/Videos';
 
 const VideoButton = ({

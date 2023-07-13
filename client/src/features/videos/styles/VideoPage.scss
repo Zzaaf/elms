@@ -5,10 +5,15 @@
     align-items: center;
     flex-wrap: wrap;
     max-width: 800px;
+    justify-content: center;
   }
+  // &__header {
+  //   margin: 0 auto;
+  //   display: flex;
+  // }
   &__player {
-    border: 2px solid black;
     margin: 0 auto;
+    display: flex;
   }
   &__button {
     outline: 0;
@@ -23,9 +28,9 @@
     border-radius: 15px;
     color: #0f0f0f;
     line-height: 1.25;
-    font-size: 10px;
+    font-size: 16px;
     font-weight: 700;
-    font-family: RF Rostin;
+    font-family: monospace;
     text-transform: uppercase;
     transition: all 0.2s ease-in-out;
     &:hover {

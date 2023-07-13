@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import VideoButton from './VideoButton';
 import './styles/VideoPage.scss';
 import { VideoItem } from './types/Videos';
@@ -21,19 +21,22 @@ const VideoPage = () => {
       .then((data) => {
         setVideosList(data.items);
       });
-    document.title = "Видео лекций";
+    document.title = "Видеолекции";
   }, []);
 
   return (
-    <div className="video-page__container">
-      {videosList.map((video) => (
-        <VideoButton key={video.id} item={video.snippet} setCurrentVideo={setCurrentVideo} />
-      ))}
+    <>
+      <div className="video-page__container">
+        {videosList.map((video) => (
+          <VideoButton key={video.id} item={video.snippet} setCurrentVideo={setCurrentVideo} />
+        ))}
+      </div>
+      <section className="video-page__player">
       {currentVideo && (
         <iframe
           className="video-page__player"
-          width="560"
-          height="315"
+          width="900"
+          height="600"
           src={`https://www.youtube.com/embed/${currentVideo}`}
           title="YouTube video player"
           frameBorder="0"
@@ -41,7 +44,8 @@ const VideoPage = () => {
           allowFullScreen
         ></iframe>
       )}
-    </div>
+    </section>
+   </>
   );
 };
 
