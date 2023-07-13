@@ -1,21 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import { Document, Page, pdfjs } from 'react-pdf';
-import axios from 'axios';
 import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
 import 'react-pdf/dist/esm/Page/TextLayer.css';
-
+import { useEffect, useState } from 'react';
+import { Document, Page, pdfjs } from 'react-pdf';
+import axios from 'axios';
 import { Presentation } from './types/Presentation';
 import { useAppDispatch } from '../../store';
 import { removePresentation } from './presentationsSlice';
 
-pdfjs.GlobalWorkerOptions.workerSrc = new URL(
-  'pdfjs-dist/build/pdf.worker.min.js',
-  import.meta.url
-).toString();
+pdfjs.GlobalWorkerOptions.workerSrc = new URL('pdfjs-dist/build/pdf.worker.min.js', import.meta.url).toString();
 
 const PresentationItem = ({ presentation }: { presentation: Presentation }) => {
   const [file, setFile] = useState('');
-  const [numPages, setNumPages] = useState(null);
+  const [numPages, setNumPages] = useState(1);
   const [pageNumber, setPageNumber] = useState(1);
   const [show, setShow] = useState(false);
   const dispatch = useAppDispatch();
@@ -29,8 +25,9 @@ const PresentationItem = ({ presentation }: { presentation: Presentation }) => {
         );
         setFile(`data:application/pdf;base64,${base64}`);
       });
-  }, []);
-  function onDocumentLoadSuccess({ numPages }) {
+    }, []);
+
+  function onDocumentLoadSuccess({ numPages } : {numPages: number}) {
     setNumPages(numPages);
   }
 
@@ -56,13 +53,10 @@ const PresentationItem = ({ presentation }: { presentation: Presentation }) => {
       </button>
       {show && presentationItem}
       <a href={`http://localhost:4000/pdf/download/${presentation.fileName}`} download>
-        <button>Download</button>
+        <button>Скачать</button>
       </a>
-      <button
-        className="presentations__btn-delete"
-        onClick={() => dispatch(removePresentation(presentation.id))}
-      >
-        Delete
+      <button className="presentations__btn-delete" onClick={() => dispatch(removePresentation(presentation.id))}>
+        Удалить
       </button>
     </div>
   );

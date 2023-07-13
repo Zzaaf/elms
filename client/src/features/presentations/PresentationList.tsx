@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-
+import { useEffect } from 'react';
 import PresentationItem from './PresentationItem';
 import Uploader from './Uploader';
 import { useAppDispatch, useAppSelector } from '../../store';
@@ -12,6 +11,7 @@ function PresentationList() {
 
   useEffect(() => {
     dispatch(getPresentations());
+    document.title = "Презентации лекций";
   }, []);
 
   return (

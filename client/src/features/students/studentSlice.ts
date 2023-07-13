@@ -63,7 +63,7 @@ const studentSlice = createSlice({
     .addCase(verificationStudent.fulfilled, (state, action) => {
       state.student = action.payload;
     })
-    .addCase(verificationStudent.rejected, (state, action) => {
+    .addCase(verificationStudent.rejected, (state) => {
       state.error = '';
     })
     .addCase(logoutStudent.fulfilled, (state) => {

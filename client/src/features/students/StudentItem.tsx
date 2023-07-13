@@ -1,9 +1,7 @@
-import React from 'react';
 import { Student } from './types/student';
 
 const StudentsItem = ({ student }: { student: Student }) => {
   return (
- 
       <tr >
         <td>{student.id}</td>
         <td>{student.firstName}</td>
@@ -13,7 +11,6 @@ const StudentsItem = ({ student }: { student: Student }) => {
         <td>{student.telephone}</td>
         <td>{student.gitHub}</td>
       </tr>
-  
   );
 };
 

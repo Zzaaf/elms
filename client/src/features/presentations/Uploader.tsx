@@ -5,6 +5,7 @@ import { addPresentation } from './presentationsSlice';
 const Uploader = () => {
   const fileInput = useRef<HTMLInputElement>(null);
   const typeDepartmentInput = useRef<HTMLInputElement>(null);
+  // const typeDepartmentInput = useRef<HTMLSelectElement>(null);
   const phaseNumberInput = useRef<HTMLInputElement>(null);
   const dispatch = useAppDispatch();
 
@@ -34,13 +35,17 @@ const Uploader = () => {
       <label>
         Тип кампуса
         <input min={1} max={5} type="number" ref={typeDepartmentInput} />
+        {/* <select ref={typeDepartmentInput}>
+          <option value='1'>Пункт 1</option>
+          <option value='2'>Пункт 2</option>
+      </select> */}
       </label>
       <label>
         Номер фазы
         <input min={1} max={3} type="number" ref={phaseNumberInput} />
       </label>
       <input type="file" ref={fileInput} />
-      <button type="submit">Upload</button>
+      <button type="submit">Загрузить</button>
     </form>
   );
 };

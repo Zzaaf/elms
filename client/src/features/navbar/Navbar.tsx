@@ -1,4 +1,3 @@
-import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './styles/NavbarStyle.scss';
 import { RootState, useAppDispatch } from '../../store';
@@ -14,7 +13,7 @@ const Navbar = () => {
   return (
     <div className="container">
       {!student ? (
-        <>
+        <>  
           <div>
             <NavLink to="/auth/registration">Регистрация</NavLink>
           </div>
@@ -28,7 +27,7 @@ const Navbar = () => {
             <NavLink to="/presentations">Презентации</NavLink>
           </div>
           <div>
-            <NavLink to="/videos">Видео</NavLink>
+            <NavLink to="/videos">Видеолекции</NavLink>
           </div>
           <div>
             <NavLink to="/students">Студенты</NavLink>
@@ -38,7 +37,7 @@ const Navbar = () => {
           </div>
           <div>
             <NavLink to="" onClick={logout}>
-              Logout
+              Выйти
             </NavLink>
           </div>
         </>

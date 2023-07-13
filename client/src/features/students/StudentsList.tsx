@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import StudentItem from './StudentItem';
 import './styles/StudentsList.scss';
-import { Student } from './types/student';
 import { RootState, useAppDispatch } from '../../store';
 import { allStudents } from './studentSlice';
 import { useSelector } from 'react-redux';
@@ -11,7 +10,8 @@ const StudentsList = () => {
   const dispatch= useAppDispatch()
   const {students} = useSelector((store:RootState)=>store.student)
   useEffect(()=>{
-dispatch(allStudents())
+    dispatch(allStudents())
+    document.title = "Список всех студентов";
   },[])
   return (
     <div className="studentsList__container">
