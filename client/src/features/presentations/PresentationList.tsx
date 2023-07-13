@@ -12,6 +12,7 @@ function PresentationList() {
 
   useEffect(() => {
     dispatch(getPresentations());
+    document.title = "Презентации лекций";
   }, []);
 
   return (

@@ -11,7 +11,8 @@ const StudentsList = () => {
   const dispatch= useAppDispatch()
   const {students} = useSelector((store:RootState)=>store.student)
   useEffect(()=>{
-dispatch(allStudents())
+    dispatch(allStudents())
+    document.title = "Список всех студентов";
   },[])
   return (
     <div className="studentsList__container">

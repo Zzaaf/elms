@@ -38,7 +38,7 @@ const Navbar = () => {
           </div>
           <div>
             <NavLink to="" onClick={logout}>
-              Logout
+              Выйти
             </NavLink>
           </div>
         </>

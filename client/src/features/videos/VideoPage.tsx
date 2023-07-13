@@ -21,6 +21,7 @@ const VideoPage = () => {
       .then((data) => {
         setVideosList(data.items);
       });
+    document.title = "Видео лекций";
   }, []);
 
   return (

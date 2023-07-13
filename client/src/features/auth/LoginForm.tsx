@@ -18,17 +18,19 @@ const schema = object().shape({
     .min(5, 'Password length should be at least 8 characters')
     .max(25, 'Password cannot exceed more than 25 characters'),
 });
+
 const LoginForm = () => {
     const {student,error} = useSelector((store:RootState)=>store.student)
     const {aUrl} = useParams()
     const navigate = useNavigate()
     useEffect(()=>{
-if(student){
-    navigate('/student/profile')
-}
-  if(aUrl && aUrl.length > 7 && !student){
-  dispatch(confirmationStudent(aUrl))
-}
+      if(student) {
+        navigate('/student/profile')
+      }
+      if(aUrl && aUrl.length > 7 && !student) {
+        dispatch(confirmationStudent(aUrl))
+      }
+      document.title = "Авторизация";
     },[student])
   const dispatch = useAppDispatch()
   const {
@@ -42,7 +44,6 @@ if(student){
   const [showPassword, setShowPassword] = useState(false);
   const onSubmit: SubmitHandler<Login> = (data) =>dispatch(loginStudent(data));
   
-
   return (
     <div className="form__container">
       <form className="form__body" onSubmit={handleSubmit(onSubmit)}>

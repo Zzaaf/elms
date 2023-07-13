@@ -12,31 +12,32 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 const schema = object().shape({
-  lastName: string().required('Surname is required'),
-  firstName: string().required('Name is required'),
-  patronymic: string().required('Patronymic is required'),
-  email: string().required('Email is required'),
-  gitHub: string().required('Github account is required'),
-  telephone:string().required('Telephone is required'),
+  lastName: string().required('Необходимо указать фамилию'),
+  firstName: string().required('Необходимо указать имя'),
+  patronymic: string().required('Необходимо указать отчество'),
+  email: string().required('Необходимо указать электронную почту'),
+  gitHub: string().required('Необходимо указать аккаунт в GitHub'),
+  telephone:string().required('Необходимо указать телефон'),
   password: string()
-    .required('Password is required')
-    .min(8, 'Password length should be at least 8 characters')
-    .max(25, 'Password cannot exceed more than 25 characters'),
+    .required('Необходимо указать пароль')
+    .min(8, 'Пароль должен быть более 8 символов')
+    .max(25, 'Пароль должен быть не более 25 символов'),
   cpassword: string()
-    .required('Confirm password is required')
-    .min(8, 'Password length should be at least 8 characters')
-    .max(25, 'Password cannot exceed more than 25 characters')
-    .oneOf([ref('password')], 'Passwords do not match'),
+    .required('Необходимо подтвердить пароль')
+    .min(8, 'Пароль должен быть более 8 символов')
+    .max(25, 'Пароль должен быть не более 25 символов')
+    .oneOf([ref('password')], 'Пароли не совпадают'),
 });
 const RegistrationForm = () => {
   const dispatch = useAppDispatch()
   const {student,message,error} = useSelector((store:RootState)=>store.student)
   const navigate = useNavigate()
   useEffect(()=>{
-    if(student){
-        navigate('/student/profile')
+    if(student) {
+      navigate('/student/profile')
     }
-        },[student])
+    document.title = "Регистрация";
+    },[student])
   const {
     register,
     handleSubmit,
@@ -49,7 +50,6 @@ const RegistrationForm = () => {
   const [showCpassword, setShowCpassword] = useState(false);
   const onSubmit: SubmitHandler<Registr> = (data) =>dispatch(registrStudent(data));
   
-
   return (
     <div className="form__container">
     { message.length > 0  ?  <div className='form_message'>{message}</div>
