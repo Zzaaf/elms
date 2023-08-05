@@ -22,7 +22,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/auth/registration" element={<RegistrationForm />} />
-        <Route path="/auth/authorization" element={<LoginForm />} />
+        <Route path="/auth/authorization/:aUrl" element={<LoginForm />} />
         <Route path="/students" element={<StudentsList />} />
         <Route path="/student/profile" element={<ProfileStudent />} />
         <Route path="/presentations" element={<PresentationList />} />
